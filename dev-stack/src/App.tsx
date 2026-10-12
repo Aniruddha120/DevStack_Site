@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import MainLayout from "./components/MainLayout";
@@ -12,19 +14,23 @@ function App() {
 
   const handleAddToStack = (tech: Technology) => {
     if (stack.some((item) => item.id === tech.id)) {
+      toast.warning("Already added!");
       return;
     }
     setStack((previousStack) => [...previousStack, tech]);
+    toast.success("Technology added!");
   };
 
   const handleRemoveFromStack = (id: string) => {
     setStack((previousStack) =>
       previousStack.filter((item) => item.id !== id),
     );
+    toast.info("Technology removed!");
   };
 
   const handleRemoveAll = () => {
     setStack([]);
+    toast.error("All technologies removed!");
   };
 
   useEffect(() => {
@@ -67,6 +73,7 @@ function App() {
           />
         )}
       </main>
+      <ToastContainer position="top-right" autoClose={2000} />
     </div>
   );
 }
