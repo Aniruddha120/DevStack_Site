@@ -5,9 +5,7 @@ const Hero = () => {
         <div className="space-y-6">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight">
             Build Your Ideal <br />
-            <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
-              Development Stack
-            </span>
+            <span className="text-brand-gradient">Development Stack</span>
           </h1>
           <p className="text-gray-600 text-base sm:text-lg max-w-lg leading-relaxed">
             Explore frontend, backend, database, and tooling options, compare
@@ -17,7 +15,7 @@ const Hero = () => {
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <a
               href="#technologies"
-              className="px-7 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold shadow-md"
+              className="px-7 py-3 rounded-xl brand-gradient text-white font-semibold shadow-md"
             >
               Explore Technologies
             </a>

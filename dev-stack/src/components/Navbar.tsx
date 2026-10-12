@@ -11,11 +11,11 @@ const Navbar = () => {
           
           {/* Logo */}
           <div className="flex items-center gap-3 cursor-pointer">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white font-extrabold text-lg shadow-sm">
+            <div className="w-10 h-10 rounded-xl brand-gradient flex items-center justify-center text-white font-extrabold text-lg shadow-sm">
               DS
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
-              Dev Stack
+            <span className="text-2xl font-bold text-gray-900">
+              Dev <span className="text-pink-600">Stack</span>
             </span>
           </div>
 
