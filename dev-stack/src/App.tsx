@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import MainLayout from "./components/MainLayout";
+import Footer from "./components/Footer";
 import type { Technology } from "./types";
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
           />
         )}
       </main>
+      <Footer />
       <ToastContainer position="top-right" autoClose={2000} />
     </div>
   );
