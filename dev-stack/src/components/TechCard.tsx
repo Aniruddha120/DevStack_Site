@@ -2,6 +2,8 @@ import type { Technology } from "../types";
 
 interface TechCardProps {
   tech: Technology;
+  isAdded: boolean;
+  onAdd: (tech: Technology) => void;
 }
 
 const badgeStyles: Record<string, string> = {
@@ -14,7 +16,7 @@ const badgeStyles: Record<string, string> = {
   Tools: "bg-slate-100 text-slate-700",
 };
 
-const TechCard = ({ tech }: TechCardProps) => {
+const TechCard = ({ tech, isAdded, onAdd }: TechCardProps) => {
   return (
     <article className="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:shadow-md">
       <div className="flex items-start justify-between gap-4">
@@ -46,6 +48,18 @@ const TechCard = ({ tech }: TechCardProps) => {
           {tech.rating}
         </span>
       </div>
+
+      <button
+        onClick={() => onAdd(tech)}
+        disabled={isAdded}
+        className={`mt-5 w-full rounded-xl py-2.5 text-sm font-semibold transition ${
+          isAdded
+            ? "cursor-not-allowed bg-gray-100 text-gray-400"
+            : "brand-gradient text-white shadow-sm hover:opacity-90"
+        }`}
+      >
+        {isAdded ? "✓ Added to Stack" : "Add to Stack"}
+      </button>
     </article>
   );
 };

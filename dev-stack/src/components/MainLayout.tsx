@@ -1,11 +1,22 @@
 import type { Technology } from "../types";
+import Sidebar from "./Sidebar";
 import TechList from "./TechList";
 
 interface MainLayoutProps {
   technologies: Technology[];
+  stack: Technology[];
+  handleAddToStack: (tech: Technology) => void;
+  handleRemoveFromStack: (id: string) => void;
+  handleRemoveAll: () => void;
 }
 
-const MainLayout = ({ technologies }: MainLayoutProps) => {
+const MainLayout = ({
+  technologies,
+  stack,
+  handleAddToStack,
+  handleRemoveFromStack,
+  handleRemoveAll,
+}: MainLayoutProps) => {
   return (
     <section
       id="technologies"
@@ -18,8 +29,19 @@ const MainLayout = ({ technologies }: MainLayoutProps) => {
         Pick one technology per category to build your ideal stack.
       </p>
 
-      <div className="mt-10">
-        <TechList technologies={technologies} />
+      <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:items-start">
+        <div className="flex-1">
+          <TechList
+            technologies={technologies}
+            stack={stack}
+            handleAddToStack={handleAddToStack}
+          />
+        </div>
+        <Sidebar
+          stack={stack}
+          handleRemoveFromStack={handleRemoveFromStack}
+          handleRemoveAll={handleRemoveAll}
+        />
       </div>
     </section>
   );

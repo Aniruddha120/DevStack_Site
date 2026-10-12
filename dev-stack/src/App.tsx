@@ -6,8 +6,26 @@ import type { Technology } from "./types";
 
 function App() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
+  const [stack, setStack] = useState<Technology[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const handleAddToStack = (tech: Technology) => {
+    if (stack.some((item) => item.id === tech.id)) {
+      return;
+    }
+    setStack((previousStack) => [...previousStack, tech]);
+  };
+
+  const handleRemoveFromStack = (id: string) => {
+    setStack((previousStack) =>
+      previousStack.filter((item) => item.id !== id),
+    );
+  };
+
+  const handleRemoveAll = () => {
+    setStack([]);
+  };
 
   useEffect(() => {
     const loadData = async () => {
@@ -40,7 +58,13 @@ function App() {
         ) : error ? (
           <p className="py-24 text-center text-red-500">{error}</p>
         ) : (
-          <MainLayout technologies={technologies} />
+          <MainLayout
+            technologies={technologies}
+            stack={stack}
+            handleAddToStack={handleAddToStack}
+            handleRemoveFromStack={handleRemoveFromStack}
+            handleRemoveAll={handleRemoveAll}
+          />
         )}
       </main>
     </div>
